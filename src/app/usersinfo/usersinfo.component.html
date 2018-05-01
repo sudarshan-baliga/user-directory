@@ -1,0 +1,67 @@
+<body>
+<div class = "head">
+  <h1>User Directory</h1>
+  <button class = "addUserBtn btn btn-primary" data-toggle="modal"
+   data-target="#myModal">Add new user</button>
+</div>
+<!-- pop up for adding user -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- user table -->
+
+<div class="usrTable table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>USER NAME</th>
+        <th>ADDRESS</th>
+        <th>CONTACT</th>
+        <th>EMAIL</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users; let i = index" class = "user">
+        <td>
+          <img src="https://t3.ftcdn.net/jpg/00/64/67/52/240_F_64675209_7ve2XQANuzuHjMZXP3aIYIpsDKEbF5dD.jpg" class=".img-circle"
+            alt="" width="30px" height="30px"> {{user.name}}
+        </td>
+        <td>{{user.address}}</td>
+        <td>{{user.contact}}</td>
+        <td >{{user.email}}</td>
+        <td>
+          <div class="options">
+              <div class="dots"  id ={{i}} (click) = "showmenu($event)" >
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                </div>
+                <div class="menu {{i}}">
+                    <ul >
+                        <li >Edit User Details</li>
+                        <li class = "{{i}}" (click) = "deleteUser(user.email)">Delete User</li>
+                      </ul>
+                </div>      
+              </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>

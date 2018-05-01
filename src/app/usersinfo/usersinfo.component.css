@@ -1,0 +1,67 @@
+
+*{
+    align-content: center;
+}
+/*profile picture only*/
+body{
+    background-color: #FAFAFA;
+    height:100vh;
+}
+.head{
+    height: 100px;
+    line-height: 100px;
+}
+.addUserBtn{
+    float:right;
+    
+}
+h1{
+    display: inline-block;
+}
+
+.usrTable{
+    background-color: #fff;
+}
+
+img{
+    border-radius: 20px;
+}
+
+/* options dots */
+.dots{
+    background-color: #FAFAFA;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    display: block;
+    cursor: pointer;
+}
+.dot {
+    height: 5px;
+    width: 5px;
+    background-color: #B2B2B2;
+    border-radius: 50%;
+    display: inline-block;
+    
+  }
+.options{
+    position: relative;
+}
+.menu{
+    box-shadow: #B2B2B2 0px 0px 10px;
+    background-color: #fff;
+    display: none;
+    position: absolute;
+    top:0;
+    left: -160px;
+    text-align: center;
+    align-content: center;
+}
+
+.menu li{
+    cursor: pointer;
+    list-style: none;
+}
+ .menu ul{
+    padding: 10px 10px 10px 10px;;
+ }
