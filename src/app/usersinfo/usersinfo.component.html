@@ -1,67 +1,130 @@
 <body>
-<div class = "head">
-  <h1>User Directory</h1>
-  <button class = "addUserBtn btn btn-primary" data-toggle="modal"
-   data-target="#myModal">Add new user</button>
-</div>
-<!-- pop up for adding user -->
-<div class="modal fade" id="myModal" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
-      </div>
-      <div class="modal-body">
-        <p>Some text in the modal.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
+  <div class="head">
+    <div class="head-content">
+      <h2>User Directory</h2>
+      <button class="addUserBtn btn btn-primary" data-toggle="modal" data-target="#addUser">
+        <i class="fas fa-plus-circle"></i>
+        Add new User</button>
     </div>
-
   </div>
-</div>
+  <!-- pop up for adding user -->
+  <div class="modal fade" id="addUser" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" #closeBtn>&times;</button>
+        <h4 class="modal-title">Add new User</h4>
 
-<!-- user table -->
+        <div class="modal-body">
+          <form (ngSubmit)="addUser(adduserform)" #adduserform="ngForm">
+            <div class="profile-container">
+              <img src="https://t3.ftcdn.net/jpg/00/64/67/52/240_F_64675209_7ve2XQANuzuHjMZXP3aIYIpsDKEbF5dD.jpg" alt="profile-image" class="profile-img">
+            </div>
 
-<div class="usrTable table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>USER NAME</th>
-        <th>ADDRESS</th>
-        <th>CONTACT</th>
-        <th>EMAIL</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of users; let i = index" class = "user">
-        <td>
-          <img src="https://t3.ftcdn.net/jpg/00/64/67/52/240_F_64675209_7ve2XQANuzuHjMZXP3aIYIpsDKEbF5dD.jpg" class=".img-circle"
-            alt="" width="30px" height="30px"> {{user.name}}
-        </td>
-        <td>{{user.address}}</td>
-        <td>{{user.contact}}</td>
-        <td >{{user.email}}</td>
-        <td>
-          <div class="options">
-              <div class="dots"  id ={{i}} (click) = "showmenu($event)" >
-                  <span class="dot"></span>
-                  <span class="dot"></span>
-                  <span class="dot"></span>
-                </div>
-                <div class="menu {{i}}">
-                    <ul >
-                        <li >Edit User Details</li>
-                        <li class = "{{i}}" (click) = "deleteUser(user.email)">Delete User</li>
-                      </ul>
-                </div>      
+            <div class="form-group name">
+              <label for="userName">User Name</label>
+              <input ngModel name="name" required type="text" class="form-control" id="userName">
+            </div>
+            <div class="form-group address">
+              <label for="address">Address</label>
+              <input ngModel name="address" required type="text" class="form-control" id="address">
+            </div>
+            <div class="form-group contact">
+              <label for="contact">Contact</label>
+              <input ngModel name="contact" required type="text" class="form-control" id="contact">
+            </div>
+            <div class="form-group email">
+              <label for="email">Email</label>
+              <input ngModel name="email" email required type="email" class="form-control" id="email">
+            </div>
+            <button type="submit" [disabled]="!adduserform.valid" class="btn addUsrSubmit">Submit</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- pop up for updating user -->
+  <div class="modal fade" id="editUser" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" #closeBtnEdit>&times;</button>
+        <h4 class="modal-title">Edit User</h4>
+
+        <div class="modal-body">
+          <form (ngSubmit)="editUser(edituserform)" #edituserform="ngForm">
+            <div class="profile-container">
+              <img src="https://t3.ftcdn.net/jpg/00/64/67/52/240_F_64675209_7ve2XQANuzuHjMZXP3aIYIpsDKEbF5dD.jpg" alt="profile-image" class="profile-img">
+            </div>
+
+
+            <div class="form-group name">
+              <label for="userName">User Name</label>
+              <input [ngModel]="edtName" name="name" required type="text" class="form-control" id="edtuserName">
+            </div>
+            <div class="form-group address">
+              <label for="address">Address</label>
+              <input [ngModel]="edtAddress" name="address" required type="text" class="form-control" id="edtaddress">
+            </div>
+            <div class="form-group contact">
+              <label for="contact">Contact</label>
+              <input [ngModel]="edtContact" name="contact" required type="text" class="form-control" id="edtcontact">
+            </div>
+            <div class="form-group email">
+              <label for="email">Email</label>
+              <input [disabled]="true" [ngModel]="edtEmail" name="email" email required type="email" class="form-control" id="edtemail">
+            </div>
+            <button type="submit" [disabled]="!edituserform.valid" class="btn addUsrSubmit">Submit</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- user table -->
+
+  <div class="usrTable table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>USER NAME</th>
+          <th>ADDRESS</th>
+          <th>CONTACT</th>
+          <th>EMAIL</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users; let i = index" class="user">
+          <td>
+            <img src="http://www.venmond.com/demo/vendroid/img/avatar/big.jpg" class=".img-circle" alt=""
+              width="30px" height="30px"> {{user.name}}
+          </td>
+          <td>{{user.address}}</td>
+          <td>{{user.contact}}</td>
+          <td>{{user.email}}</td>
+          <td>
+            <div class="options">
+              <div class="dots" id={{i}} (click)="showmenu($event)">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
               </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+              <div class="menu {{i}}" #menu{{i}}>
+                <ul>
+                  <li class="{{i}}" data-toggle="modal" data-target="#editUser" (click)="updateEditVal($event)">
+                    <i class="fas fa-edit"></i>Edit User Details</li>
+                  <li class="{{i}}" (click)="deleteUser(user.email)">
+                    <i class="fas fa-trash"></i>
+                    Delete User</li>
+                </ul>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </body>

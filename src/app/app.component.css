@@ -1,0 +1,40 @@
+.nav{
+    background-color: #2D0048;
+    list-style: none;
+    color: #fff;
+    line-height: 56px;
+}
+.fa-bars{
+    font-size: 20px;
+    padding:10px;
+}
+h4{
+    display: inline-block;
+}
+
+.nav a{
+    color: #fff;
+}
+.nav-tabs{
+    position: relative;
+    display: inline-block;
+    left:50%;
+    transform: translateX(-100%);
+    color:#2D0048;
+    border:none;
+}
+
+.nav-tabs>li>a{
+    border:none;
+}
+
+.nav-tabs>li.active>a{
+    background-color: #2D0048;
+    border-bottom:2px solid grey;
+}
+.nav>li>a:focus, .nav>li>a:hover{
+    background-color: rgb(64, 3, 100);
+}
+.nav-tabs:active{
+    background-color: #2D0048;
+}
