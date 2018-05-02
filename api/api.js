@@ -40,9 +40,9 @@ router.put('/users/add',function(req,res,next){
 })
 //update user
 router.post('/users/update',function(req,res,next){
-    console.log(JSON.parse(req.body))
     User.findOneAndUpdate({ email:JSON.parse(req.body).email},JSON.parse(req.body),function (err) {
         if (err) {
+            console.log(err);
             res.send(err);
         } 
         else {
@@ -55,10 +55,10 @@ router.post('/users/update',function(req,res,next){
 router.post('/users/delete',function(req,res,next){
     User.findOneAndRemove(JSON.parse(req.body),function (err) {
         if (err) {
+            console.log(err);
             res.send(err);
         } 
         else {
-            console.log(JSON.parse(req.body))
             res.send("success");
         }
     });
