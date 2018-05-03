@@ -1,3 +1,4 @@
+Here is the live version https://usrdirectory.herokuapp.com/
 A user directory module built using MEAN stack.
 To run the project first run <code> ng build</code> then  <code>npm install</code> then run <code> node server.js</code>
 <br>
