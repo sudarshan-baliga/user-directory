@@ -4,7 +4,7 @@ var mongoose = require("mongoose");
 var User = require('../models/user');
 
 //connect to mlab
-mongoose.connect('mongodb://sudarshan:1234@ds163769.mlab.com:63769/internship');
+mongoose.connect('mongodb://<usrname>:<password>@ds163769.mlab.com:63769/internship'); //get the user name and password first
 
 
 router.get('/', (req, res) => {
