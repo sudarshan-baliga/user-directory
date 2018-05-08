@@ -2,9 +2,11 @@ const express = require('express');
 const router = express.Router();
 var mongoose = require("mongoose");
 var User = require('../models/user');
-
+var credentials = require('./credentials');
+if (credentials.username == '<username>' || credentials.password == '<password>')
+    throw new Error("Enter your database url");
 //connect to mlab
-mongoose.connect('mongodb://<usrname>:<password>@ds163769.mlab.com:63769/internship'); //get the user name and password first
+mongoose.connect('mongodb://'+credentials.username+':'+credentials.password+'@ds163769.mlab.com:63769/internship'); //get the user name and password first
 
 
 router.get('/', (req, res) => {
