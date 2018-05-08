@@ -12,7 +12,7 @@ app.use(bodyParser.raw({ type: () => true }));
 app.use('/api',api);
 
 app.get("*", function(req, res){
-  res.sendFile(__dirname + "dist/index.html");
+  res.sendFile(__dirname + "/dist/index.html");
 })
 
 server = http.createServer(app)
