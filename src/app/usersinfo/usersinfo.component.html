@@ -85,46 +85,55 @@
 
   <!-- user table -->
 
-  <div class="usrTable table-responsive">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>USER NAME</th>
-          <th>ADDRESS</th>
-          <th>CONTACT</th>
-          <th>EMAIL</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let user of users; let i = index" class="user">
-          <td>
-            <img src="http://www.venmond.com/demo/vendroid/img/avatar/big.jpg" class=".img-circle" alt=""
-              width="30px" height="30px"> {{user.name}}
-          </td>
-          <td>{{user.address}}</td>
-          <td>{{user.contact}}</td>
-          <td>{{user.email}}</td>
-          <td>
+  <div class="usrTable">
+    <div class="table">
+        <div class = "crow">
+          <div class = "ccol usern">USER NAME</div>
+          <div class = "ccol addr">ADDRESS</div>
+          <div class = "ccol cont">CONTACT</div>
+          <div class = "ccol emai">EMAIL</div>
+          <div class = "ccol empt"></div>
+        </div>
+        <div *ngFor="let user of users; let i = index" class="crow user">
+          <div class = "ccol usern">
+            <img src="http://www.venmond.com/demo/vendroid/img/avatar/big.jpg" class="img-circle lf" width="30px" height="30px"> 
+            <div class = "ccol">{{user.name}}</div>
+          </div>
+          <div class = "ccol addr">{{user.address}}</div>
+          <div class = "ccol cont">{{user.contact}}</div>
+          <div class = "ccol emai">{{user.email}}</div>
+          <div class = "ccol empt">
             <div class="options">
-              <div class="dots" id={{i}} (click)="showmenu($event)">
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
+              <div class="dots" id={{i}} (click)="showmenu(i)">
+                <i class="fas fa-ellipsis-v"></i>
               </div>
-              <div class="menu {{i}}" #menu{{i}}>
+              <div class="menu {{i}}" *ngIf="check(i)" #menu{{i}}>
                 <ul>
                   <li class="{{i}}" data-toggle="modal" data-target="#editUser" (click)="updateEditVal($event)">
-                    <i class="fas fa-edit"></i>Edit User Details</li>
+                    <div class="icon">
+                      <i class="fas fa-edit"></i>
+                    </div>
+                    <div class="label">
+                      Edit User Details
+                    </div>
+                  </li>
                   <li class="{{i}}" (click)="deleteUser(user.email)">
-                    <i class="fas fa-trash"></i>
-                    Delete User</li>
+                    <div class="icon">
+                      <i class="fas fa-trash"></i>
+                    </div>
+                    <div class="label">
+                      Delete User
+                    </div>
+                  </li>
                 </ul>
               </div>
             </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+          </div>
+
+        </div>
+
+    </div>
+
+
+    </div>
 </body>

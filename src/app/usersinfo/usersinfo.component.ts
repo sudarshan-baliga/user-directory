@@ -29,20 +29,28 @@ export class UsersinfoComponent implements OnInit {
   edtAddress = 'address';
   edtContact = "0000000000";
   edtEmail = "example@example.com";
+  user_toggle = []
   users: any;
   constructor(private usersdataService: UsersdataService) {}
   ngOnInit() {
     this.usersdataService.getUsers().subscribe(users => {
       this.users = users;
+      this.filltoggle();
     });
   }
-
+  filltoggle() {
+    this.user_toggle = [];
+    for (var i = 0; i < this.users.length; ++i) {
+      this.user_toggle.push(0);
+    }
+  }
+  check(i) {
+    return this.user_toggle[i];
+  }
   showmenu(element) {
-    var ele = document.getElementsByClassName(element.target.id) as HTMLCollectionOf < HTMLElement > ;
-    if (ele[0].style.display == 'block') {
-      ele[0].style.display = 'none'
-    } else
-      ele[0].style.display = 'block'
+    var set = this.user_toggle[element];
+    this.filltoggle();
+    this.user_toggle[element] = !set;
   }
   addUser(form: NgForm) {
     this.usersdataService.addUser(form.value.name, form.value.address, form.value.contact, form.value.email).subscribe(response => {
