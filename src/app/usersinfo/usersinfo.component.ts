@@ -64,12 +64,12 @@ export class UsersinfoComponent implements OnInit {
 
     });
   }
-  updateEditVal(element){
-    var index = element.target.className;
-    this.edtName = this.users[index].name;
-    this.edtContact = this.users[index].contact;
-    this.edtAddress = this.users[index].address;
-    this.edtEmail = this.users[index].email;
+  updateEditVal(i){
+    
+    this.edtName = this.users[i].name;
+    this.edtContact = this.users[i].contact;
+    this.edtAddress = this.users[i].address;
+    this.edtEmail = this.users[i].email;
   }
   editUser(form: NgForm) {
     console.log(form);
